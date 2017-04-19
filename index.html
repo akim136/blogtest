@@ -6,10 +6,18 @@
   
   //Function
   <script>
+    var x = 5;
+    var y = 6;
+    var z = x*y;
+    document.getElementById('samp').innerHTML ='z'
     function myFunction() {
-     document.getElementById('header1').innerHTML = 'Goodbye World!';
+      document.getElementById('header1').innerHTML = 'Goodbye World!';
+    }
+    function disappear(){
+      document.getElementById('button1').style.display='none';
     }
   </script>
+  
 </head>
 
 <body style="background-color: black; color: white">
@@ -19,7 +27,9 @@
   <p>Put button here.</p>
   <p> <button type="button" id="button1" onclick="myFunction()">Click Me!</button> </p>
   <p>Second button.</p>
-  <p><button type="button" id="button2" onclick="document.getElementById('button1').style.display='none'">Also click me!</button></p>
+  <p><button type="button" id="button2" onclick=disappear()>Also click me!</button></p>
+  
+  <p id="samp">Sample Number.</p>
   
 </body>
 </html>
