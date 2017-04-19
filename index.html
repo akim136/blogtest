@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <title>Example: Blog</title>
   
-  //Function
   <script>
     var x = 5;
     var y = 6;
     var z = x*y;
     var boo = true;
-    document.getElementById('samp').innerHTML ='z';
+    function heatFeel(temp) {
+      return temp + 10;
+    }
+    document.getElementById('samp').innerHTML ='It feels like it is' + heatFeel(z);
     function myFunction() {
       document.getElementById('header1').innerHTML = 'Goodbye World!';
     }
@@ -24,7 +26,6 @@
 <body style="background-color: black; color: white">
   <h1 id="header1">Hello World!</h1>
 
-  //Buttons
   <p>Put button here.</p>
   <p> <button type="button" id="button1" onclick="myFunction()">Click Me!</button> </p>
   <p>Second button.</p>
