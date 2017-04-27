@@ -102,13 +102,11 @@
     <body onload="GetArduinoIO()">
         <h1>Arduino Ajax LED Button Control</h1>
         <div class="IO_box">
-            <h2>LED Using Checkbox</h2>
-            <form id="check_LEDs" name="LED_form">
-                <input type="checkbox" name="LED1" onclick="GetButton1()" />LED 1 is OFF (D6)<br /><br />
-            </form>
+            <h2>Power Button</h2>
+            <button type="button" name="LED1" onclick="GetButton1()" />LED 1 is OFF (D6)<br /><br />
         </div>
         <div class="IO_box">
-            <h2>LED Using Button</h2>
+            <h2>Action Button</h2>
             <button type="button" id="LED2" onclick="GetButton2()">LED 2 is OFF (D7)</button><br /><br />
         </div>
     </body>
