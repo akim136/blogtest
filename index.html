@@ -5,6 +5,7 @@
         <script>
         strLED1 = "";
         strLED2 = "";
+        var LED1_state = 0;
         var LED2_state = 0;
         function GetArduinoIO()
         {
@@ -18,11 +19,13 @@
                             // XML file received - contains analog values, switch values and LED states
                             var count;
                             // LED 1
-                            if (this.responseXML.getElementsByTagName('LED')[0].childNodes[0].nodeValue === "checked") {
-                                document.LED_form.LED1.checked = true;  //checked box is checked
+                            if (this.responseXML.getElementsByTagName('LED')[0].childNodes[0].nodeValue === "on") {
+                                document.getElementById("LED1").innerHTML = "LED 1 is ON (D6)";
+                                LED1_state = 1;
                             }
                             else {
-                                document.LED_form.LED1.checked = false;
+                                document.getElementById("LED1").innerHTML = "LED 2 is OFF (D6)";
+                                LED2_state = 0;
                             }
                             // LED 2
                             if (this.responseXML.getElementsByTagName('LED')[1].childNodes[0].nodeValue === "on") {
@@ -45,16 +48,18 @@
             strLED2 = "";
         }
         // service LEDs when checkbox checked/unchecked
-        function GetCheck()
+        function GetButton1()
         {
-            if (LED_form.LED1.checked) {
-                strLED1 = "&LED1=1";
-            }
-            else {
+            if (LED1_state === 1) {
+                LED1_state = 0;
                 strLED1 = "&LED1=0";
             }
+            else {
+                LED1_state = 1;
+                strLED1 = "&LED1=1";
+            }
         }
-        function GetButton1()
+        function GetButton2()
         {
             if (LED2_state === 1) {
                 LED2_state = 0;
@@ -99,12 +104,12 @@
         <div class="IO_box">
             <h2>LED Using Checkbox</h2>
             <form id="check_LEDs" name="LED_form">
-                <input type="checkbox" name="LED1" value="0" onclick="GetCheck()" />LED 1 (D6)<br /><br />
+                <input type="checkbox" name="LED1" onclick="GetButton1()" />LED 1 is OFF (D6)<br /><br />
             </form>
         </div>
         <div class="IO_box">
             <h2>LED Using Button</h2>
-            <button type="button" id="LED2" onclick="GetButton1()">LED 2 is OFF (D7)</button><br /><br />
+            <button type="button" id="LED2" onclick="GetButton2()">LED 2 is OFF (D7)</button><br /><br />
         </div>
     </body>
 </html>
